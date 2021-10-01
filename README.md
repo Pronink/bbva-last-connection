@@ -1,6 +1,8 @@
 ## Scripts usados para crear el proyecto:
 - `npx create-react-app bbva-last-connection --template cra-template-pwa-typescript`
 - `npm install node-sass --save`
+- `npm install crypto-js --save`
+- `npm install @types/crypto-js --save-dev`
 
 ## Ejecutar solo en web
 - Open terminal and type:
@@ -35,3 +37,13 @@ es más difícil de seguir, en mi opinión. Fuente: https://es.stackoverflow.com
 en el localstorage, y simulará algo de delay (como si de una conexión a backend real
 se tratase).
 - Estoy usando Webstorm 2021.2.2
+- El idioma usado en el código de programación estará en inglés, sin embargo, para
+acelerar la velocidad del desarrollo, la documentación y los comentarios de código
+estarán en español
+- El sistema de inicio de sesión usa SHA256 para almacenar las contraseñas hasheadas.
+
+## Mejoras realizables en el futuro
+Aquí dejo constancia de mejoras que se me han ocurrido pero que no he realizado
+por la simplicidad del proyecto o por agilizar el desarrollo.
+- Usar tokens para identificar a los usuarios una vez han iniciado sesión.
+- Usar SHA512 y salt para mejorar la seguridad de las contraseñas guardadas.
