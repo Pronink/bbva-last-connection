@@ -12,7 +12,7 @@ export default function App() {
             {
                 !loguedUser
                     ? <Login onLogin={user => setLoguedUser(user)}/>
-                    : <Welcome onLogout={() => setLoguedUser(null)}/>
+                    : <Welcome onLogout={() => setLoguedUser(null)} loguedUser={loguedUser}/>
             }
         </div>
     );
