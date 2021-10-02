@@ -1,0 +1,63 @@
+:root {
+  --padlock-border-width: 2px;
+  --padlock-border: solid var(--primary-color) var(--padlock-border-width);
+}
+.Padlock {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .ring {
+    position: relative;
+    z-index: 1;
+    height: 50px;
+    width: 35px;
+    border: var(--padlock-border);
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.25s;
+
+    &:after { // Bloque blanco que tapa el lado más corto del aro del candado
+      content: '';
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      left: -5px;
+      bottom: 0;
+      background-color: white;
+    }
+  }
+
+  .body {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    height: 45px;
+    width: 55px;
+    border: var(--padlock-border);
+    border-radius: 3px;
+    background-color: white;
+
+    .cylinder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      div:first-child {
+        height: 8px;
+        width: 8px;
+        border: var(--padlock-border);
+        border-radius: 20px;
+      }
+      div:last-child {
+        width: var(--padlock-border-width);
+        height: 7px;
+        background-color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+

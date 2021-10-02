@@ -1,0 +1,20 @@
+:root {
+  --primary-color: #2c4991;
+}
+
+input {
+  border: none;
+  border-bottom: solid gray 1px;
+  color: gray;
+  padding: 0.4rem;
+  outline: none;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border-style: none;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
