@@ -12,6 +12,15 @@ export default function Login(props: { onLogin: (user: User) => any }) {
     const [password, setPassword] = useState('');
 
     const tryLogin = async () => {
+        // Comprobar campos
+        if (email.trim() === '' || password.trim() === '') {
+            alert(`Email and Password inputs can't be empty`);
+            return;
+        }
+        if (!isEmail(email)) {
+            alert('Email input text must be an email');
+            return;
+        }
         // Intentar iniciar sesión
         let user = await FalseBackend.login(email, password);
         if (!user) {
@@ -28,13 +37,19 @@ export default function Login(props: { onLogin: (user: User) => any }) {
         props.onLogin(user);
     }
 
+    const isEmail = (email: string) => {
+        const regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regExp.test(email.toLowerCase());
+    }
+
     return <div className={'Login'}>
         <form onSubmit={(e) => {
             e.preventDefault();
             tryLogin();
         }}>
             <Padlock isOpen={isPadlockOpen}/>
-            <input type="text" placeholder={'Email'} value={email} onChange={e => setEmail(e.target.value)}/>
+            <input type="text" placeholder={'Email'} value={email} onChange={e => setEmail(e.target.value)}
+            className={(email === '' || isEmail(email)) ? '' : 'invalid'}/>
             <input type="password" placeholder={'Password'} value={password}
                    onChange={e => setPassword(e.target.value)}/>
             <button type={'submit'}>Log In</button>

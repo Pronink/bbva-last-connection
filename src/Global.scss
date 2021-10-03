@@ -1,5 +1,6 @@
 :root {
-  --primary-color: #2c4991;
+  --primary-color: #004385;
+  --error-color: #912c2c;
 }
 
 input {
@@ -7,7 +8,18 @@ input {
   border-bottom: solid gray 1px;
   color: gray;
   padding: 0.4rem;
-  outline: none;
+  outline: none!important;
+  transition: color 0.2s, border-bottom 0.2s;
+
+  &:focus {
+    color: var(--primary-color);
+    border-bottom: solid var(--primary-color) 1px;
+  }
+
+  &.invalid {
+    color: var(--error-color);
+    border-bottom: solid var(--error-color) 1px;
+  }
 }
 
 button {
@@ -17,4 +29,23 @@ button {
   border-radius: 3px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  width: max-content;
+  transition: filter 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    filter: brightness(1.3);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+
+  }
 }
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
