@@ -5,7 +5,7 @@ import {useState} from "react";
 import FalseBackend from "../../backend/FalseBackend";
 import Util from "../../Util";
 
-export default function Login(props: {onLogin: (user: User) => any}) {
+export default function Login(props: { onLogin: (user: User) => any }) {
 
     const [isPadlockOpen, setPadlockOpen] = useState<boolean>(false);
     const [email, setEmail] = useState('');
@@ -29,9 +29,15 @@ export default function Login(props: {onLogin: (user: User) => any}) {
     }
 
     return <div className={'Login'}>
-        <Padlock isOpen={isPadlockOpen}/>
-        <input type="text" placeholder={'Email'} value={email} onChange={e => setEmail(e.target.value)}/>
-        <input type="password" placeholder={'Password'} value={password} onChange={e => setPassword(e.target.value)}/>
-        <button onClick={() => tryLogin()}>Log In</button>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            tryLogin();
+        }}>
+            <Padlock isOpen={isPadlockOpen}/>
+            <input type="text" placeholder={'Email'} value={email} onChange={e => setEmail(e.target.value)}/>
+            <input type="password" placeholder={'Password'} value={password}
+                   onChange={e => setPassword(e.target.value)}/>
+            <button type={'submit'}>Log In</button>
+        </form>
     </div>;
 }
