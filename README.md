@@ -40,7 +40,9 @@ mantener y refactorizar, aunque este proyecto puede prescindir de éste. He valo
 la alternativa de usar jsdoc para tipar los parámetros y propiedades de clases,
 pero no me convenció.
 - Los estilos estarán diferenciados: layout (flexbox, grid) y no-layout (colores, 
-tamaño, otros) .
+tamaño, otros).
+- El candado del inicio de sesión está creado con html+css y tiene una animación
+cuando se inicia sesión.
 - Returns en funciones: he decidio usar el patrón del "templo maldito", acuñado por
 un programador en stackoverflow, que consiste en salir o retornar lo antes posible
 un valor de una función para evitar montañas de elseifs cuyo recorrido de ejecución 
@@ -59,13 +61,13 @@ Aquí dejo constancia de mejoras que se me han ocurrido pero que no he realizado
 por agilizar el desarrollo en el tiempo limitado del que dispongo:
 - Usar tokens para identificar a los usuarios una vez han iniciado sesión.
 - Usar SHA512 y salt para mejorar la seguridad de las contraseñas guardadas.
-- Sustituir alert() por un mensaje flotante
+- Sustituir alert() por un mensaje flotante.
+- Revisar cada cierto tiempo si se inició sesión desde otro navegador y actualizar
+el contador.
+- Internacionalizar página con react-i18next
 
 ## Scripts usados para la creación el proyecto:
 - `npx create-react-app bbva-last-connection --template cra-template-pwa-typescript`
 - `npm install node-sass --save`
 - `npm install crypto-js --save`
 - `npm install @types/crypto-js --save-dev`
-
-## Acerca de
-Proyecto creado por Ismael García Torres para un proceso de selección.

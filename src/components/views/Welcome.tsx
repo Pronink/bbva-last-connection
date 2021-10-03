@@ -7,6 +7,10 @@ export default function Welcome(props: { onLogout: Function, loguedUser: User })
 
     const [timeElapsed, setTimeElapsed] = useState<number>(0);
 
+    /**
+     * Calcula el tiempo que ha transcurrido entre ahora y el penúltimo login (en el caso de no existir aún, se usará
+     * el último login, que siempre será el login actual)
+     */
     const updateTimeElapsed = () => {
         if (!props.loguedUser.penultimateLogin) {
             setTimeElapsed(Date.now() - props.loguedUser.lastLogin!);

@@ -8,7 +8,7 @@ input {
   border-bottom: solid gray 1px;
   color: gray;
   padding: 0.4rem;
-  outline: none!important;
+  outline: none;
   transition: color 0.2s, border-bottom 0.2s;
 
   &:focus {

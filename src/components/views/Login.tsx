@@ -1,19 +1,24 @@
 import {User} from "../../types/User";
 import './Login.scss';
 import Padlock from "../Padlock";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import FalseBackend from "../../backend/FalseBackend";
 import Util from "../../Util";
 
 export default function Login(props: { onLogin: (user: User) => any }) {
 
-    const [isPadlockOpen, setPadlockOpen] = useState<boolean>(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [isPadlockOpen, setPadlockOpen] = useState<boolean>(true); // Se pone en false al cargar el componente
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    useEffect(() => {
+        // Se cierra el candado cuando termina la transición de la vista
+        setTimeout(() => setPadlockOpen(false), 800);
+    }, []);
 
     const tryLogin = async () => {
         // Comprobar campos
-        if (email.trim() === '' || password.trim() === '') {
+        if (email?.trim() === '' || password?.trim() === '') {
             alert(`Email and Password inputs can't be empty`);
             return;
         }
@@ -21,6 +26,7 @@ export default function Login(props: { onLogin: (user: User) => any }) {
             alert('Email input text must be an email');
             return;
         }
+
         // Intentar iniciar sesión
         let user = await FalseBackend.login(email, password);
         if (!user) {
@@ -31,7 +37,7 @@ export default function Login(props: { onLogin: (user: User) => any }) {
 
         // Animación del candado
         setPadlockOpen(!!user);
-        await Util.sleep(500); // Esperar a la transición del candado abriéndose
+        await Util.sleep(750); // Esperar a la transición del candado abriéndose
 
         // Cambiar vista principal
         props.onLogin(user);
@@ -43,7 +49,7 @@ export default function Login(props: { onLogin: (user: User) => any }) {
     }
 
     return <div className={'Login'}>
-        <form onSubmit={(e) => {
+        <form onSubmit={(e) => { // Permite usar la tecla "intro" para iniciar sesión
             e.preventDefault();
             tryLogin();
         }}>
