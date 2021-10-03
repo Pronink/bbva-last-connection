@@ -1,22 +1,34 @@
-## Scripts usados para crear el proyecto:
-- `npx create-react-app bbva-last-connection --template cra-template-pwa-typescript`
-- `npm install node-sass --save`
-- `npm install crypto-js --save`
-- `npm install @types/crypto-js --save-dev`
+# BBVA Last connection
+Aplicación web progresiva creada con React, Typescript y SCSS
+por Ismael García Torres.
 
-## Ejecutar solo en web
-- Open terminal and type:
+## Prerequisitos
+- node 12.22.5
+- npm 6.14.14
+
+## Construir entorno de desarrollo
+- Abrir terminal y escribir:
+    - `npm install` (solo primera vez)
     - `npm start`
 
-## Ejecutar web con opción a instalar PWA:
+## Construir build para producción y con opción a instalar PWA:
 - Abrir terminal y escribir:
-    - `npm run build`
-    - `npm install -g serve`
-    - `serve -s build`
+  - `npm install` (solo primera vez)
+  - `npm run build`
+  - `npm install -g serve`
+  - `serve -s build`
 - Abrir `http://localhost:5000` en el navegador.
 - Instalar PWA pulsando el botón a la derecha de la URL.
 
-## Información:
+## Usuarios de ejemplo
+Para iniciar sesión, he creado 3 usuarios de prueba:
+- sonia@gmail.com
+- patricia@gmail.com
+- ismael.garcia.torres@gmail.com
+
+La contraseña para todos es la misma: `1234`
+
+## Más información:
 - Uso de React por la reactividad, componetización y porque es ideal para hacer 
 Single page applications y Progressive web apps.
 - Por la sencillez de la interfaz, he decidido no usar ninguna librería gráfica, 
@@ -44,6 +56,16 @@ estarán en español
 
 ## Mejoras realizables en el futuro
 Aquí dejo constancia de mejoras que se me han ocurrido pero que no he realizado
-por la simplicidad del proyecto o por agilizar el desarrollo.
+por agilizar el desarrollo en el tiempo limitado del que dispongo:
 - Usar tokens para identificar a los usuarios una vez han iniciado sesión.
 - Usar SHA512 y salt para mejorar la seguridad de las contraseñas guardadas.
+- Sustituir alert() por un mensaje flotante
+
+## Scripts usados para la creación el proyecto:
+- `npx create-react-app bbva-last-connection --template cra-template-pwa-typescript`
+- `npm install node-sass --save`
+- `npm install crypto-js --save`
+- `npm install @types/crypto-js --save-dev`
+
+## Acerca de
+Proyecto creado por Ismael García Torres para un proceso de selección.
